@@ -140,5 +140,16 @@ internal class Builder
             Console.WriteLine("Successfully copied CrystalMarble.dll");
             File.Copy(LoaderPath, Path.Combine(config.UltraPath, "CrystalMarble.dll"), true);
         }
+        if (config.Classic)
+        {
+            Console.WriteLine("Installing CrystalMarble to Marble it Up! Classic");
+            File.WriteAllText(Path.Combine(config.ClassicPath, "doorstop_config.ini"), DoorstopConfigContent);
+            Console.WriteLine("Successfully written doorstop_config.ini");
+            File.Copy(WinHttpDllPath, Path.Combine(config.ClassicPath, "winhttp.dll"), true);
+            Console.WriteLine("Successfully copied Doorstop winhttp.dll");
+            File.Copy(DoorstopVersionPath, Path.Combine(config.ClassicPath, ".doorstop_version"), true);
+            Console.WriteLine("Successfully copied CrystalMarble.dll");
+            File.Copy(LoaderPath, Path.Combine(config.ClassicPath, "CrystalMarble.dll"), true);
+        }
     }
 }
