@@ -15,7 +15,7 @@ namespace Doorstop
 
         public static void Start()
         {
-            Logging.Info("Loaded CrystalMarble");
+            Logging.Info("Loaded CrystalMarble!");
 
             foreach (string modFolder in Directory.GetDirectories("Mods"))
             {
@@ -26,17 +26,17 @@ namespace Doorstop
                     Logging.Info("Loading: " + file);
                     try
                     {
-                        Type type = Enumerable.FirstOrDefault<Type>(Assembly.LoadFrom(file).GetTypes(), (Type t) => t.Name == "PatchEntryPoint");
+                        Type type = Enumerable.FirstOrDefault<Type>(Assembly.LoadFrom(file).GetTypes(), (Type t) => t.Name == "CrystalMarble");
                         if (type == null)
                         {
-                            Logging.Info("Entrypoint type not found");
+                            Logging.Info("CrystalMarble type not found");
                         }
                         else
                         {
-                            MethodInfo method = type.GetMethod("Start", BindingFlags.Static | BindingFlags.Public);
+                            MethodInfo method = type.GetMethod("OnLoad", BindingFlags.Static | BindingFlags.Public);
                             if (method == null)
                             {
-                                Logging.Warn("Start method not found for " + modFolder);
+                                Logging.Error("`OnLoad` method not found for " + modFolder);
                             }
                             else
                             {
@@ -48,7 +48,7 @@ namespace Doorstop
                     }
                     catch (Exception ex)
                     {
-                        Logging.Warn("Error while loading CrystalMarble: " + ex.ToString());
+                        Logging.Warn($"Error while loading {modFolder}: " + ex.ToString());
                     }
                 }
                 Logging.Info("Done loading mod");

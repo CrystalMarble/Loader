@@ -15,15 +15,13 @@ class Config
 
 internal class Builder
 {
-
-
     public static string GetDoorstopPath()
     {
         var ShouldDownloadDoorstop = Prompt.Confirm("Should the program automatically download Doorstop for you?", defaultValue: true);
         if (ShouldDownloadDoorstop) {
             Console.WriteLine("Downloading UnityDoorstop...");
             var client = new HttpClient();
-            var responseTask = client.GetAsync("https://github.com/NeighTools/UnityDoorstop/releases/download/v4.3.0/doorstop_win_verbose_4.3.0.zip");
+            var responseTask = client.GetAsync("https://github.com/NeighTools/UnityDoorstop/releases/download/v4.3.0/doorstop_win_release_4.3.0.zip");
             responseTask.Wait();
             Directory.CreateDirectory("_Doorstop");
             var contentTask = responseTask.Result.Content.ReadAsByteArrayAsync();
