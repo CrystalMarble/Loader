@@ -1,5 +1,8 @@
-![CrystalMarble](https://github.com/user-attachments/assets/05e3afcc-fbd4-4985-a13b-1b5fdbcd5c3c)
-# Crystalmarble Loader
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/05e3afcc-fbd4-4985-a13b-1b5fdbcd5c3c" height="128" width="128" />
+  <h1 align="center">Crystalmarble Loader</h1>
+</p>
+
 The Marble it Up! Cross-game ModLoader
 ## Building
 
